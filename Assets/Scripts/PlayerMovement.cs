@@ -1,7 +1,9 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private Player _player;
     private PlayerControllers _controllers;
     private CharacterController _characterController;
     private Animator _animator;
@@ -16,20 +18,16 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Aim info")]
     [SerializeField] private LayerMask aimLayerMask;
-    [SerializeField] private Transform aimTransform;
+    [FormerlySerializedAs("aimTransform")] [SerializeField] private Transform aim;
     private Vector3 lookingDirection;
     
     
     private Vector2 moveInput;
     private Vector2 aimInput;
-    private void Awake()
-    {
-        AssignedInputSystem();
-    }
 
     private void AssignedInputSystem()
     {
-        _controllers = new PlayerControllers();
+        _controllers = _player.controllers;
 
         _controllers.Character.Movement.performed +=
             ctx => moveInput = ctx.ReadValue<Vector2>();
@@ -43,31 +41,16 @@ public class PlayerMovement : MonoBehaviour
 
         _controllers.Character.Run.performed += _ => isRunning = true;
         _controllers.Character.Run.canceled += _ => isRunning = false;
-
-        _controllers.Character.Fire.performed += _ => Shoot();
     }
-
-    private void Shoot()
-    {
-        print("Shoot");
-        _animator.SetTrigger("Fire");
-        
-    }
-    private void OnEnable()
-    {
-        _controllers.Enable();
-    }
-
-    private void OnDisable()
-    {
-        _controllers.Disable();
-    }
+    
 
     private void Start()
     {
+        _player = GetComponent<Player>();   
         _characterController = GetComponent<CharacterController>();
         _animator = GetComponentInChildren<Animator>();
         speed = walkSpeed;
+        AssignedInputSystem();
     }
 
     private void Update()
@@ -100,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
             lookingDirection.Normalize();
 
             transform.forward = lookingDirection;
-            aimTransform.position = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+            aim.position = new Vector3(hit.point.x, transform.position.y + 1, hit.point.z);
         }
     }
 
