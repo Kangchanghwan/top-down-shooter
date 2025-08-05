@@ -27,7 +27,7 @@ public class PlayerWeaponController : MonoBehaviour
         _player = GetComponent<Player>();
         AssignInputEvents();
         
-        currentWeapon.ammo = currentWeapon.maxAmmo;
+        currentWeapon.bulletsInMagazine = currentWeapon.totalReserveAmmo;
     }
 
     #region Slots management
@@ -89,8 +89,8 @@ public class PlayerWeaponController : MonoBehaviour
         // gunPoint.LookAt(aim); TODO : find a better place for it.
         return direction;
     }
-    public Transform GunPoint => gunPoint;
-
+    public Transform GunPoint() => gunPoint;
+    public Weapon CurrentWeapon() => currentWeapon;
     #region  inputEvent
 
     private void AssignInputEvents()
@@ -102,7 +102,13 @@ public class PlayerWeaponController : MonoBehaviour
         controllers.Character.EquipSlot2.performed += _ => EquipWeapon(1);
 
         controllers.Character.DropCurrentWeapon.performed += _ => DropWeapon();
-
+        controllers.Character.Reload.performed += _ =>
+        {
+            if (currentWeapon.CanReload())
+            {
+                _player.weaponVisuals.PlayReloadAnimation();
+            }
+        };
     }
 
     #endregion
