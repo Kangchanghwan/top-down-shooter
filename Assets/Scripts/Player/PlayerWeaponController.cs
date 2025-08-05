@@ -26,9 +26,10 @@ public class PlayerWeaponController : MonoBehaviour
     {
         _player = GetComponent<Player>();
         AssignInputEvents();
-        
-        currentWeapon.bulletsInMagazine = currentWeapon.totalReserveAmmo;
+        Invoke("EquipStartWeapon", .1f);
     }
+
+    private void EquipStartWeapon() => EquipWeapon(0);
 
     #region Slots management
     public void PickupWeapon(Weapon newWeapon)
@@ -40,22 +41,22 @@ public class PlayerWeaponController : MonoBehaviour
         }
 
         weaponSlots.Add(newWeapon);
+        _player.weaponVisuals.SwitchOnBackUpWeaponModel();
     }
     private void DropWeapon()
     {
-        if (weaponSlots.Count <= 1)
+        if (HasOnlyOneWeapon())
         {
             return;
         }
 
         weaponSlots.Remove(currentWeapon);
-        currentWeapon = weaponSlots[0];
+        EquipWeapon(0);
     }
     private void EquipWeapon(int index)
     {
         currentWeapon = weaponSlots[index];
-        
-        _player.weaponVisuals.SwitchOffWeaponModels();
+
         _player.weaponVisuals.PlayWeaponEquipAnimation();
     }
     #endregion
@@ -92,8 +93,24 @@ public class PlayerWeaponController : MonoBehaviour
         // gunPoint.LookAt(aim); TODO : find a better place for it.
         return direction;
     }
+
+    public bool HasOnlyOneWeapon() => weaponSlots.Count <= 1;
+
     public Transform GunPoint() => gunPoint;
     public Weapon CurrentWeapon() => currentWeapon;
+
+    public Weapon BackUpWeapon()
+    {
+        foreach (var weapon in weaponSlots)
+        {
+            if (weapon != currentWeapon)
+            {
+                return weapon;
+            }
+        }
+
+        return null;
+    }
     #region  inputEvent
 
     private void AssignInputEvents()

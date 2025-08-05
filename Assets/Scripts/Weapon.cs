@@ -18,6 +18,10 @@ public class Weapon
     public int magazineCapacity;
     public int totalReserveAmmo;
 
+    [Range(1, 3)]
+    public float reloadSpeed = 1;
+    [Range(1, 3)] public float equipSpeed = 1;
+    
     public bool CanShoot()
     {
         return HaveEnoughBullets();

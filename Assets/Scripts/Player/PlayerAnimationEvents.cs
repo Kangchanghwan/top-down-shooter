@@ -23,7 +23,7 @@ public class PlayerAnimationEvents : MonoBehaviour
     }
     public void WeaponGrabIsOver()
     {
-        _visuals.SetBusyGrabbingWeapon(false);
+        _visuals.SetIsEquipingWeapon(false);
     }
 
     public void SwitchOnWeaponModel() => _visuals.SwitchOnCurrentWeaponModel();
