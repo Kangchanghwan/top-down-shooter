@@ -54,6 +54,9 @@ public class PlayerWeaponController : MonoBehaviour
     private void EquipWeapon(int index)
     {
         currentWeapon = weaponSlots[index];
+        
+        _player.weaponVisuals.SwitchOffWeaponModels();
+        _player.weaponVisuals.PlayWeaponEquipAnimation();
     }
     #endregion
     
