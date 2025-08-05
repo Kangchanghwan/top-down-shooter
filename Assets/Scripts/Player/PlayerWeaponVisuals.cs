@@ -84,7 +84,7 @@ public class PlayerWeaponVisuals : MonoBehaviour
     public void SetBusyGrabbingWeapon(bool busy)
     {
         _isGrabbingWeapon = busy;
-        _anim.SetBool("BusyGrabbingWeapon", _isGrabbingWeapon);
+        _anim.SetBool("isGrabbingWeapon", _isGrabbingWeapon);
     }
     public void ReturnRigWeightToOne() => _shouldIncreaseRigWeight = true;
     public void ReturnLeftHandIKWeightToOne() => _shouldIncreaseLeftHandIKWeight = true;
