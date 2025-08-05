@@ -13,7 +13,7 @@ public enum WeaponType
 [System.Serializable]
 public class Weapon
 {
-    public WeaponType WeaponType;
+    public WeaponType weaponType;
     public int bulletsInMagazine;
     public int magazineCapacity;
     public int totalReserveAmmo;
