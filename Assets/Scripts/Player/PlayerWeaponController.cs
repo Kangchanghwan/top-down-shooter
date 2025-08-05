@@ -63,12 +63,11 @@ public class PlayerWeaponController : MonoBehaviour
     
     private void Shoot()
     {
-        if (currentWeapon.CanShoot() == false)
-        {
-            return;
-        }
-        
-        GameObject newBullet = Instantiate(bulletPrefeb, gunPoint.position, Quaternion.LookRotation(gunPoint.forward));
+        if (currentWeapon.CanShoot() == false) return;
+
+        GameObject newBullet = ObjectPool.instance.GetBullet();
+        newBullet.transform.position = gunPoint.position;
+        newBullet.transform.rotation = Quaternion.LookRotation(gunPoint.forward);
         Rigidbody rbNewBullet = newBullet.GetComponent<Rigidbody>();
         
         rbNewBullet.mass = REFERENCE_BULLET_SPEED / bulletSpeed;
