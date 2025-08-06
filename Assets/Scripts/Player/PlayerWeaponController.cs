@@ -68,6 +68,8 @@ public class PlayerWeaponController : MonoBehaviour
     }
     private void EquipWeapon(int index)
     {
+        if (index >= weaponSlots.Count) return;
+        
         SetWeaponReady(false);
         currentWeapon = weaponSlots[index];
 
@@ -140,22 +142,24 @@ public class PlayerWeaponController : MonoBehaviour
 
     public bool HasOnlyOneWeapon() => weaponSlots.Count <= 1;
 
-    public Transform GunPoint() => _player.weaponVisuals.CurrentWeaponModel().gunPoint;
-    public Weapon CurrentWeapon() => currentWeapon;
-    public void SetWeaponReady(bool ready) => _weaponReady = ready;
-    public bool WeaponReady() => _weaponReady;
-    public Weapon BackUpWeapon()
+    public Weapon WeaponInSlots(WeaponType weaponType)
     {
         foreach (var weapon in weaponSlots)
         {
-            if (weapon != currentWeapon)
+            if (weapon.weaponType == weaponType)
             {
                 return weapon;
             }
         }
-
         return null;
     }
+
+    public Transform GunPoint() => _player.weaponVisuals.CurrentWeaponModel().gunPoint;
+    public Weapon CurrentWeapon() => currentWeapon;
+    public void SetWeaponReady(bool ready) => _weaponReady = ready;
+    public bool WeaponReady() => _weaponReady;
+
+    
     #region  inputEvent
 
     private void AssignInputEvents()
@@ -166,6 +170,9 @@ public class PlayerWeaponController : MonoBehaviour
 
         controllers.Character.EquipSlot1.performed += _ => EquipWeapon(0);
         controllers.Character.EquipSlot2.performed += _ => EquipWeapon(1);
+        controllers.Character.EquipSlot3.performed += _ => EquipWeapon(2);
+        controllers.Character.EquipSlot4.performed += _ => EquipWeapon(3);
+        controllers.Character.EquipSlot5.performed += _ => EquipWeapon(4);
 
         controllers.Character.DropCurrentWeapon.performed += _ => DropWeapon();
         controllers.Character.Reload.performed += _ =>
@@ -175,6 +182,8 @@ public class PlayerWeaponController : MonoBehaviour
                 Reload();
             }
         };
+
+        controllers.Character.ToggleWeaponMode.performed += _ => currentWeapon.ToggleBurst();
     }
 
     private void Reload()

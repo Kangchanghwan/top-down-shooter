@@ -1,15 +1,15 @@
-using System;
 using Unity.Cinemachine;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
     public static CameraManager instance;
-    private CinemachineCamera camera;
     private CinemachinePositionComposer cameraComposer;
 
-    private float targetCameraDistance;
-    private float distanceChangeRate;
+    private float _targetCameraDistance;
+
+    [SerializeField] private bool canChangeCameraDistance;
+    [SerializeField]private float distanceChangeRate;
 
     private void Awake()
     {
@@ -23,24 +23,29 @@ public class CameraManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        camera = GetComponentInChildren<CinemachineCamera>();
         cameraComposer = GetComponentInChildren<CinemachinePositionComposer>();
     }
 
     private void Update()
     {
-        UpdateCameraDistance();
+        // UpdateCameraDistance();
     }
 
     private void UpdateCameraDistance()
     {
+        if (canChangeCameraDistance == false)
+        {
+            return;
+        }
+        
         float currentDistance = cameraComposer.CameraDistance;
+        print(_targetCameraDistance - currentDistance);
 
-        if (Mathf.Abs(targetCameraDistance - currentDistance) < .01f) return;
+        if (Mathf.Abs(_targetCameraDistance - currentDistance) < .01f) return;
 
         cameraComposer.CameraDistance =
-            Mathf.Lerp(cameraComposer.CameraDistance, targetCameraDistance, distanceChangeRate * Time.deltaTime);
+            Mathf.Lerp(cameraComposer.CameraDistance, _targetCameraDistance, distanceChangeRate * Time.deltaTime);
     }
 
-    public void ChangeCameraDistance(float distance) => targetCameraDistance = distance;
+    public void ChangeCameraDistance(float distance) => _targetCameraDistance = distance;
 }
