@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
-using UnityEngine.Serialization;
 
 public class PlayerWeaponVisuals : MonoBehaviour
 {
@@ -22,7 +21,6 @@ public class PlayerWeaponVisuals : MonoBehaviour
     [SerializeField] private float leftHandIKWeightIncreaseRate;
     private bool _shouldIncreaseLeftHandIKWeight;
 
-    private bool _isEquipingWeapon;
     void Start()
     {
         _anim = GetComponentInChildren<Animator>();
@@ -54,21 +52,15 @@ public class PlayerWeaponVisuals : MonoBehaviour
 
         return weaponModel;
     }
-    
+
+    public void PlayFireAnimation() => _anim.SetTrigger("Fire");
     public void PlayReloadAnimation()
     {
-        if (_isEquipingWeapon) return;
         float  reloadSpeed = _player.weapon.CurrentWeapon().reloadSpeed;
         _anim.SetFloat("ReloadSpeed", reloadSpeed);
         _anim.SetTrigger("Reload");
         
         ReduceRigWeight();
-    }
-    
-    public void SetIsEquipingWeapon(bool busy)
-    {
-        _isEquipingWeapon = busy;
-        _anim.SetBool("isEquipingWeapon", _isEquipingWeapon);
     }
     
     public void SwitchOnCurrentWeaponModel()
@@ -137,7 +129,6 @@ public class PlayerWeaponVisuals : MonoBehaviour
         _anim.SetTrigger("EquipWeapon");
         _anim.SetFloat("EquipType", (float)equipType);
         _anim.SetFloat("EquipSpeed", equipmentSpeed);
-        SetIsEquipingWeapon(true);
     }
     
     

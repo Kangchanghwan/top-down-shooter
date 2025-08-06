@@ -6,8 +6,6 @@ public class Bullet : MonoBehaviour
 
     [SerializeField] private GameObject bulletImpactFx;
     
-    private Rigidbody rb => GetComponent<Rigidbody>();
-    
     private void OnCollisionEnter(Collision other)
     {
         CreateImpactFx(other);

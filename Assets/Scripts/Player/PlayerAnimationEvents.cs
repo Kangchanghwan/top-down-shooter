@@ -14,6 +14,8 @@ public class PlayerAnimationEvents : MonoBehaviour
     {
         _visuals.ReturnRigWeightToOne();
         _weaponController.CurrentWeapon().RefillBullets();
+        
+        _weaponController.SetWeaponReady(true);
     }
 
     public void ReturnRig()
@@ -21,9 +23,9 @@ public class PlayerAnimationEvents : MonoBehaviour
         _visuals.ReturnRigWeightToOne();
         _visuals.ReturnLeftHandIKWeightToOne();
     }
-    public void WeaponGrabIsOver()
+    public void WeaponEquipIsOver()
     {
-        _visuals.SetIsEquipingWeapon(false);
+        _weaponController.SetWeaponReady(true);
     }
 
     public void SwitchOnWeaponModel() => _visuals.SwitchOnCurrentWeaponModel();
