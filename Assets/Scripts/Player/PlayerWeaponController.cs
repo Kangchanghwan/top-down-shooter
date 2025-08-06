@@ -81,9 +81,11 @@ public class PlayerWeaponController : MonoBehaviour
         newBullet.transform.position = GunPoint().position;
         newBullet.transform.rotation = Quaternion.LookRotation(GunPoint().forward);
         Rigidbody rbNewBullet = newBullet.GetComponent<Rigidbody>();
+
+        Vector3 bulletDir = currentWeapon.ApplySpread(BulletDirection());
         
         rbNewBullet.mass = REFERENCE_BULLET_SPEED / bulletSpeed;
-        rbNewBullet.linearVelocity = BulletDirection() * bulletSpeed;
+        rbNewBullet.linearVelocity = bulletDir * bulletSpeed;
         
         ObjectPool.instance.ReturnBullet(newBullet);
         _player.weaponVisuals.PlayFireAnimation();
