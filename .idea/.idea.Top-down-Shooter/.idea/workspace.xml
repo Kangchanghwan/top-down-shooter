@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="33ad7cd2-9469-4214-8de9-cfffd40c4278" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Top-down-Shooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Top-down-Shooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Bullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerAim.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerAim.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CameraManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerWeaponController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerWeaponController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapon.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,7 +223,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754444696592</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="feat: 총알 거리 기능 구현">
+      <option name="closed" value="true" />
+      <created>1754447515764</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1754447515764</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -269,7 +275,8 @@
     <MESSAGE value="feat: 자동 / 수동 총발사 타입 구현" />
     <MESSAGE value="feat: 총알 퍼지는 효과 구현" />
     <MESSAGE value="feat: 점사 / 샷건 구현" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 점사 / 샷건 구현" />
+    <MESSAGE value="feat: 총알 거리 기능 구현" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 총알 거리 기능 구현" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
