@@ -41,17 +41,18 @@ public class Weapon
 
     [Range(1, 3)] public float reloadSpeed = 1;
     [Range(1, 3)] public float equipSpeed = 1;
+    [Range(2, 12)] public float gunDistance = 4;
+    [Range(3, 8)] public float cameraDistance = 6;
     
     [Header("Spread ")] 
     public float baseSpread;
     public float currentSpread = 2;
     public float maximumSpread = 3;
-
     public float spreadIncreaseRate = .15f;
     
     private float _lastSpreadUpdateTime;
     private float _spreadCooldown = 1;
-
+    
     #region Spread Methods
     public Vector3 ApplySpread(Vector3 orinDir)
     {

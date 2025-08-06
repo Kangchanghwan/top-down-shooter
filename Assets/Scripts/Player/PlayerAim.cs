@@ -60,7 +60,7 @@ public class PlayerAim : MonoBehaviour
         weaponModel.gunPoint.LookAt(aim);
         
         
-        float gunDistance = 4f;
+        float gunDistance = _player.weapon.CurrentWeapon().gunDistance;
         float laserTipLength = .5f;
         
         Transform gunPoint = _player.weapon.GunPoint();
