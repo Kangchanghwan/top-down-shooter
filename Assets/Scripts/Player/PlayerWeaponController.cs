@@ -1,7 +1,6 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PlayerWeaponController : MonoBehaviour
 {
@@ -35,6 +34,11 @@ public class PlayerWeaponController : MonoBehaviour
         if (_isShooting)
         {
             Shoot();
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            currentWeapon.ToggleBurst();
         }
     }
     
@@ -75,8 +79,35 @@ public class PlayerWeaponController : MonoBehaviour
     private void Shoot()
     {
         if (currentWeapon.CanShoot() == false || WeaponReady() == false) return;
+      
+        _player.weaponVisuals.PlayFireAnimation();
         if (currentWeapon.shootType == ShootType.Single) _isShooting = false;
+        if (currentWeapon.burstActive == true)
+        {
+            StartCoroutine(BurstFire());
+            return;
+        }
+        FireSingleBullet();
+    }
 
+    private IEnumerator BurstFire()
+    {
+        SetWeaponReady(false);
+        for (int i = 1; i <= currentWeapon.bulletPerShot; i++)
+        {
+            FireSingleBullet();
+
+            yield return new WaitForSeconds(currentWeapon.burstFireDelay);
+            if (i >= currentWeapon.bulletPerShot)
+            {
+                SetWeaponReady(true);
+            }
+        }
+    }
+    private void FireSingleBullet()
+    {
+        currentWeapon.bulletsInMagazine--;
+        
         GameObject newBullet = ObjectPool.instance.GetBullet();
         newBullet.transform.position = GunPoint().position;
         newBullet.transform.rotation = Quaternion.LookRotation(GunPoint().forward);
@@ -86,10 +117,8 @@ public class PlayerWeaponController : MonoBehaviour
         
         rbNewBullet.mass = REFERENCE_BULLET_SPEED / bulletSpeed;
         rbNewBullet.linearVelocity = bulletDir * bulletSpeed;
-        
-        ObjectPool.instance.ReturnBullet(newBullet);
-        _player.weaponVisuals.PlayFireAnimation();
     }
+
     public Vector3 BulletDirection()
     {
         Transform aim = _player.aim.Aim();

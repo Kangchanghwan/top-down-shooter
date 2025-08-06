@@ -20,12 +20,20 @@ public enum ShootType
 public class Weapon
 {
     public WeaponType weaponType;
-
+    public int bulletPerShot;
+    
     [Header("Shooting spesifics")] 
     public ShootType shootType;
+    public float defaultFireRate;
     public float fireRate = 1;
     private float _lastShootTime;
 
+    [Header("Burst fire")] public bool burstModeAvalible;
+    public bool burstActive;
+    public int burstBulletsPerShot;
+    public int burstFireRate;
+    public float burstFireDelay = .1f;
+    
     [Header("Magazine details")]
     public int bulletsInMagazine;
     public int magazineCapacity;
@@ -33,7 +41,7 @@ public class Weapon
 
     [Range(1, 3)] public float reloadSpeed = 1;
     [Range(1, 3)] public float equipSpeed = 1;
-
+    
     [Header("Spread ")] 
     public float baseSpread;
     public float currentSpread = 2;
@@ -45,7 +53,6 @@ public class Weapon
     private float _spreadCooldown = 1;
 
     #region Spread Methods
-
     public Vector3 ApplySpread(Vector3 orinDir)
     {
         UpdateSpread();
@@ -76,17 +83,40 @@ public class Weapon
 
 
     #endregion
-   
-    public bool CanShoot()
+
+    #region Burst Method
+
+    public bool BurstActivated()
     {
-        if (HaveEnoughBullets() && ReadyToFire())
+        if (weaponType == WeaponType.Shotgun)
         {
-            bulletsInMagazine--;
+            burstFireDelay = 0;
             return true;
         }
 
-        return false;
+        return burstActive;
     }
+
+    public void ToggleBurst()
+    {
+        if (burstModeAvalible == false) return;
+        burstActive = !burstActive;
+
+        if (burstActive)
+        {
+            bulletPerShot = burstBulletsPerShot;
+            fireRate = burstFireRate;
+        }
+        else
+        {
+            bulletPerShot = 1;
+            fireRate = defaultFireRate;
+        }
+    }
+    
+    #endregion
+
+    public bool CanShoot() => HaveEnoughBullets() && ReadyToFire();
 
     private bool ReadyToFire()
     {
