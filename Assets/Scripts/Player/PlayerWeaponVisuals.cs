@@ -145,7 +145,7 @@ public class PlayerWeaponVisuals : MonoBehaviour
     {
         EquipType equipType = CurrentWeaponModel().equipAnimationType;
 
-        float equipmentSpeed = _player.weapon.CurrentWeapon().equipSpeed;
+        float equipmentSpeed = _player.weapon.CurrentWeapon().equipmentSpeed;
         
         leftHandIK.weight = 0;
         ReduceRigWeight();

@@ -424,94 +424,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentWeapon:
-    weaponType: 3
-    bulletPerShot: 10
+    weaponType: 0
     shootType: 0
-    defaultFireRate: 0
     fireRate: 1
-    burstModeAvalible: 1
     burstActive: 1
-    burstBulletsPerShot: 10
-    burstFireRate: 0
-    burstFireDelay: 0
     bulletsInMagazine: 99882
     magazineCapacity: 99999
     totalReserveAmmo: 99999
-    reloadSpeed: 1.983
-    equipSpeed: 1.93
-    gunDistance: 4
-    cameraDistance: 6
-    baseSpread: 3
-    currentSpread: 3
-    maximumSpread: 3
-    spreadIncreaseRate: 0.15
   bulletPrefeb: {fileID: 7912379356398560585, guid: c669b538888a54d9798c6708dd7dce6e, type: 3}
   bulletSpeed: 20
   weaponHolder: {fileID: 242014149}
   weaponSlots:
-  - weaponType: 1
-    bulletPerShot: 1
-    shootType: 0
-    defaultFireRate: 4
-    fireRate: 4
-    burstModeAvalible: 0
-    burstActive: 0
-    burstBulletsPerShot: 1
-    burstFireRate: 0
-    burstFireDelay: 0
-    bulletsInMagazine: 99882
-    magazineCapacity: 99999
-    totalReserveAmmo: 99999
-    reloadSpeed: 1.983
-    equipSpeed: 1.93
-    gunDistance: 4
-    cameraDistance: 3
-    baseSpread: 3
-    currentSpread: 3
-    maximumSpread: 3
-    spreadIncreaseRate: 0.15
-  - weaponType: 2
-    bulletPerShot: 0
-    shootType: 1
-    defaultFireRate: 31
-    fireRate: 31
-    burstModeAvalible: 1
-    burstActive: 0
-    burstBulletsPerShot: 3
-    burstFireRate: 0
-    burstFireDelay: 0.1
-    bulletsInMagazine: 12
-    magazineCapacity: 12
-    totalReserveAmmo: 141
-    reloadSpeed: 0
-    equipSpeed: 1
-    gunDistance: 4
-    cameraDistance: 8
-    baseSpread: 0
-    currentSpread: 2
-    maximumSpread: 3
-    spreadIncreaseRate: 0.15
   - weaponType: 0
-    bulletPerShot: 1
-    shootType: 1
-    defaultFireRate: 6
-    fireRate: 6
-    burstModeAvalible: 0
+    shootType: 0
+    fireRate: 1
     burstActive: 0
-    burstBulletsPerShot: 0
-    burstFireRate: 0
-    burstFireDelay: 0.1
-    bulletsInMagazine: 12
-    magazineCapacity: 12
-    totalReserveAmmo: 141
-    reloadSpeed: 1.696
-    equipSpeed: 1.87
-    gunDistance: 4
-    cameraDistance: 8
-    baseSpread: 0
-    currentSpread: 2
-    maximumSpread: 3
-    spreadIncreaseRate: 0.15
+    bulletsInMagazine: 111
+    magazineCapacity: 11
+    totalReserveAmmo: 1111
   maxSlots: 3
 --- !u!114 &121432564
 MonoBehaviour:
@@ -4415,7 +4345,7 @@ Transform:
   m_GameObject: {fileID: 105244868866379009}
   serializedVersion: 2
   m_LocalRotation: {x: -0.30657136, y: -0.0068425713, z: -0.042297885, w: 0.9508828}
-  m_LocalPosition: {x: 0.0000000012308282, y: 0.3229479, z: 5.943251e-10}
+  m_LocalPosition: {x: 0, y: 0.3229479, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6005,7 +5935,7 @@ Transform:
   m_GameObject: {fileID: 3979209534443808986}
   serializedVersion: 2
   m_LocalRotation: {x: 0.65323836, y: -0.08979479, z: -0.013616079, w: 0.7516856}
-  m_LocalPosition: {x: -3.6020537e-11, y: 0.298804, z: 0.0000000025074496}
+  m_LocalPosition: {x: -0.01, y: 0.3, z: 0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7222,28 +7152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e24a69ad9f8543779d63b2f08dd6aa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon:
-    weaponType: 2
-    bulletPerShot: 0
-    shootType: 0
-    defaultFireRate: 0
-    fireRate: 1
-    burstModeAvalible: 0
-    burstActive: 0
-    burstBulletsPerShot: 0
-    burstFireRate: 0
-    burstFireDelay: 0.1
-    bulletsInMagazine: 40
-    magazineCapacity: 10
-    totalReserveAmmo: 111
-    reloadSpeed: 1
-    equipSpeed: 1
-    gunDistance: 4
-    cameraDistance: 6
-    baseSpread: 0
-    currentSpread: 2
-    maximumSpread: 3
-    spreadIncreaseRate: 0.15
+  weaponData: {fileID: 11400000, guid: 2341707a809284748b68f961349af0d6, type: 2}
 --- !u!1 &8387858075097281794
 GameObject:
   m_ObjectHideFlags: 0

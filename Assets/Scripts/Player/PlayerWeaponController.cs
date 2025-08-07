@@ -10,7 +10,7 @@ public class PlayerWeaponController : MonoBehaviour
     
     private bool _weaponReady;
     private bool _isShooting;
-    
+    [SerializeField] private WeaponData defaultWeapon;
     [SerializeField] private Weapon currentWeapon;
     
     [Header("Bullet details")]
@@ -41,11 +41,15 @@ public class PlayerWeaponController : MonoBehaviour
             currentWeapon.ToggleBurst();
         }
     }
-    
-    private void EquipStartWeapon() => EquipWeapon(0);
+
+    private void EquipStartWeapon()
+    {
+        PickupWeapon(defaultWeapon);
+        EquipWeapon(0);
+    }
 
     #region Slots management Pickup/Drop/Equip/Ready
-    public void PickupWeapon(Weapon newWeapon)
+    public void PickupWeapon(WeaponData weaponData)
     {
         if (weaponSlots.Count >= maxSlots)
         {
@@ -53,7 +57,8 @@ public class PlayerWeaponController : MonoBehaviour
             return;
         }
 
-        weaponSlots.Add(newWeapon);
+        var weapon = new Weapon(weaponData);
+        weaponSlots.Add(weapon);
         _player.weaponVisuals.SwitchOnBackUpWeaponModel();
     }
     private void DropWeapon()
@@ -96,12 +101,12 @@ public class PlayerWeaponController : MonoBehaviour
     private IEnumerator BurstFire()
     {
         SetWeaponReady(false);
-        for (int i = 1; i <= currentWeapon.bulletPerShot; i++)
+        for (int i = 1; i <= currentWeapon.bulletsPerShot; i++)
         {
             FireSingleBullet();
 
             yield return new WaitForSeconds(currentWeapon.burstFireDelay);
-            if (i >= currentWeapon.bulletPerShot)
+            if (i >= currentWeapon.bulletsPerShot)
             {
                 SetWeaponReady(true);
             }
