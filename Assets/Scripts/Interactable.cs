@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
+   protected PlayerWeaponController _weaponController;
 
    protected MeshRenderer _meshRenderer;
    protected Material _defaultMaterial;
@@ -38,8 +39,12 @@ public class Interactable : MonoBehaviour
          _meshRenderer.material = _defaultMaterial;
    }
    
-   protected virtual void OnTriggerEnter(Collider other)
+   private void OnTriggerEnter(Collider other)
    {
+      if (_weaponController == null)
+      {
+         _weaponController = other.GetComponent<PlayerWeaponController>();
+      }
       PlayerInteraction playerInteraction = other.GetComponent<PlayerInteraction>();
 
       if (playerInteraction == null) return;
