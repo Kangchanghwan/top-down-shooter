@@ -21,6 +21,8 @@ public class PlayerWeaponController : MonoBehaviour
     [Header("Inventory")] [SerializeField]
     private List<Weapon> weaponSlots;
     [SerializeField] private int maxSlots = 2;
+
+    [SerializeField] private GameObject weaponPickUpPrefab;
     
     void Start()
     {
@@ -44,21 +46,33 @@ public class PlayerWeaponController : MonoBehaviour
 
     private void EquipStartWeapon()
     {
-        PickupWeapon(defaultWeapon);
+        PickupWeapon(new Weapon(defaultWeapon));
         EquipWeapon(0);
     }
 
     #region Slots management Pickup/Drop/Equip/Ready
-    public void PickupWeapon(WeaponData weaponData)
+    public void PickupWeapon(Weapon newWeapon)
     {
-        if (weaponSlots.Count >= maxSlots)
+
+        if (WeaponInSlots(newWeapon.weaponType) != null)
         {
-            print("No slots avalible");
+            WeaponInSlots(newWeapon.weaponType).totalReserveAmmo += newWeapon.bulletsInMagazine;
+            return;
+        }
+        
+        if (weaponSlots.Count >= maxSlots && newWeapon.weaponType != currentWeapon.weaponType)
+        {
+            int weaponIndex = weaponSlots.IndexOf(currentWeapon);
+            
+            _player.weaponVisuals.SwitchOffWeaponModels();
+            weaponSlots[weaponIndex] = newWeapon;
+            
+            CreateWeaponOnTheGround();
+            EquipWeapon(weaponIndex);
             return;
         }
 
-        var weapon = new Weapon(weaponData);
-        weaponSlots.Add(weapon);
+        weaponSlots.Add(newWeapon);
         _player.weaponVisuals.SwitchOnBackUpWeaponModel();
     }
     private void DropWeapon()
@@ -68,9 +82,18 @@ public class PlayerWeaponController : MonoBehaviour
             return;
         }
 
+        CreateWeaponOnTheGround();
+
         weaponSlots.Remove(currentWeapon);
         EquipWeapon(0);
     }
+
+    private void CreateWeaponOnTheGround()
+    {
+        GameObject droppedWeapon = ObjectPool.instance.GetObject(weaponPickUpPrefab);
+        droppedWeapon.GetComponent<PickUpWeapon>().SetUpPickUpWeapon(currentWeapon, transform);
+    }
+
     private void EquipWeapon(int index)
     {
         if (index >= weaponSlots.Count) return;

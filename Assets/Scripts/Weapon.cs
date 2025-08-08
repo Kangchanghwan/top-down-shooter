@@ -63,7 +63,9 @@ public class Weapon
     private float _spreadCooldown = 1;
 
     #endregion
-
+    
+    public WeaponData weaponData { get; private set; }
+    
     public Weapon(WeaponData weaponData)
     {
 
@@ -94,10 +96,10 @@ public class Weapon
         equipmentSpeed = weaponData.equipmentSpeed;
         gunDistance = weaponData.gunDistance;
         cameraDistance = weaponData.cameraDistance;
-
         
-
         _defaultFireRate = fireRate;
+
+        this.weaponData = weaponData;
     }
     
     #region Spread Methods
