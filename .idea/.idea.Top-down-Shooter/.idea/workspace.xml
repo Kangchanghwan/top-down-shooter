@@ -5,15 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33ad7cd2-9469-4214-8de9-cfffd40c4278" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyStateMachine.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/IdleStateMelee.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/MoveStateMelee.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/ChaseStateMelee.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyAnimationEvents.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/RecoveryStateMelee.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Top-down-Shooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Top-down-Shooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/IdleStateMelee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/IdleStateMelee.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/MoveStateMelee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/MoveStateMelee.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +136,7 @@
       <updated>1753342215081</updated>
       <workItem from="1753342217306" duration="7359000" />
       <workItem from="1754449396290" duration="12070000" />
-      <workItem from="1754576136069" duration="18489000" />
+      <workItem from="1754576136069" duration="26703000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 총 장전, 스왑 애니메이션 구현">
       <option name="closed" value="true" />
@@ -280,7 +282,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754631527970</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="feat: Enemy FSM 구축">
+      <option name="closed" value="true" />
+      <created>1754693293172</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1754693293172</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,7 +341,8 @@
     <MESSAGE value="feat: 무기데이터 스크립터블 데이터로 변환" />
     <MESSAGE value="feat: 총 버리기 / 픽업기능 추가" />
     <MESSAGE value="feat: 총알 아이템 구현 및 파일 정리" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 총알 아이템 구현 및 파일 정리" />
+    <MESSAGE value="feat: Enemy FSM 구축" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Enemy FSM 구축" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

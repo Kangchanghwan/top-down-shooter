@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MoveStateMelee : EnemyState
 {
@@ -14,19 +15,32 @@ public class MoveStateMelee : EnemyState
     public override void Enter()
     {
         base.Enter();
-        this.destination = enemy.GetPatrolDestination();
+
+        enemy.agent.speed = enemy.moveSpeed;
+        
+        destination = enemy.GetPatrolDestination();
+        enemy.agent.SetDestination(destination);
     }
 
     public override void Update()
     {
         base.Update();
-        enemy.agent.SetDestination(destination);
 
-        if (enemy.agent.remainingDistance <= 1)
+        if (enemy.PlayerInAggresionRange())
+        {
+            stateMachine.ChangeState(enemy.recoveryState);
+            return;
+        }
+        
+        enemy.transform.rotation = enemy.FaceTarget(GetNextPathPoint());
+        
+        if (enemy.agent.remainingDistance <= enemy.agent.stoppingDistance + 0.05f)
         {
             stateMachine.ChangeState(enemy.idleState);
         }
     }
+
+
 
     public override void Exit()
     {
