@@ -2,45 +2,65 @@ using UnityEngine;
 
 public class AttackStateMelee : EnemyState
 {
-    private EnemyMelee enemy;
+    private EnemyMelee _enemy;
     private Vector3 _attackDirection;
+
+    private float _attackMoveSpeed;
+    
 
     private const float MAX_ATTACK_DISTANCE = 50f;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public AttackStateMelee(Enemy enemyBase, EnemyStateMachine stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
-        enemy = enemyBase as EnemyMelee;
+        _enemy = enemyBase as EnemyMelee;
     }
 
     public override void Enter()
     {
         base.Enter();
+
+        _attackMoveSpeed = _enemy.attackData.moveSpeed;
+        _enemy.anim.SetFloat("AttackAnimationSpeed", _enemy.attackData.animationSpeed);
+        _enemy.anim.SetFloat("AttackIndex", _enemy.attackData.attackIndex);
         
-        enemy.PullWeapon();
+        _enemy.PullWeapon();
         
-        enemy.agent.isStopped = true;
-        enemy.agent.velocity = Vector3.zero;
+        _enemy.agent.isStopped = true;
+        _enemy.agent.velocity = Vector3.zero;
         
-        _attackDirection = enemy.transform.position + (enemy.transform.forward * MAX_ATTACK_DISTANCE);
+        _attackDirection = _enemy.transform.position + (_enemy.transform.forward * MAX_ATTACK_DISTANCE);
     }
 
     public override void Update()
     {
         base.Update();
 
-        if (enemy.ManualMovementActive())
+        if (_enemy.ManualRotationActive())
         {
-            enemy.transform.position = Vector3.MoveTowards(
-                enemy.transform.position,
+            _enemy.transform.rotation = _enemy.FaceTarget(enemyBase.player.position);
+            _attackDirection = _enemy.transform.position + (_enemy.transform.forward * MAX_ATTACK_DISTANCE);
+        }
+
+        if (_enemy.ManualMovementActive())
+        {
+            _enemy.transform.position = Vector3.MoveTowards(
+                _enemy.transform.position,
                 _attackDirection, 
-                enemy.attackMoveSpeed * Time.deltaTime);
+                _attackMoveSpeed * Time.deltaTime);
         }
         
        
         if (triggerCalled)
         {
-            stateMachine.ChangeState(enemy.chaseState);
+            if (_enemy.PlayerInAttackRange())
+            {
+                stateMachine.ChangeState(_enemy.recoveryState);
+            }
+            else
+            {
+                stateMachine.ChangeState(_enemy.chaseState);
+            }
         }
     }
 

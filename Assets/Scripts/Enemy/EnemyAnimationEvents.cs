@@ -12,7 +12,9 @@ public class EnemyAnimationEvents : MonoBehaviour
 
     public void AnimationTrigger() => enemy.AnimationTrigger();
 
-    public void StartManualMovement() => enemy.ActiveManalMovement(true);
-    public void StopManualMovement() => enemy.ActiveManalMovement(false);
+    public void StartManualMovement() => enemy.ActivateManualMovement(true);
+    public void StopManualMovement() => enemy.ActivateManualMovement(false);
+    public void StartManualRotation() => enemy.ActivateManualRotation(true);
+    public void StopManualRotation() => enemy.ActivateManualRotation(false);
     
 }

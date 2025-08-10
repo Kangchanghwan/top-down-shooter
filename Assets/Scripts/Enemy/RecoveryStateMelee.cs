@@ -12,6 +12,7 @@ public class RecoveryStateMelee : EnemyState
     public override void Enter()
     {
         base.Enter();
+        
         enemy.agent.isStopped = true;
     }
 
@@ -21,12 +22,26 @@ public class RecoveryStateMelee : EnemyState
         enemy.transform.rotation = enemy.FaceTarget(enemy.player.position);
         if (triggerCalled == true)
         {
-            stateMachine.ChangeState(enemy.chaseState);
+            if (enemy.PlayerInAttackRange())
+            {
+                stateMachine.ChangeState(enemy.attackState);
+            }
+            else
+            {
+                stateMachine.ChangeState(enemy.chaseState);
+            }
         }
     }
 
     public override void Exit()
     {
         base.Exit();
+        
+        enemy.anim.SetFloat("RecoveryIndex", 0);
+        if (enemy.PlayerInAttackRange())
+        {
+            enemy.anim.SetFloat("RecoveryIndex", 1);
+        }
+        
     }
 }

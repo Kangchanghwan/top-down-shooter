@@ -4,18 +4,16 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    public float turnSpeed;
+    [Header("Idle data")] 
+    public float idleTime;
     public float aggresionRange;
 
-    [Header("Attack data")] 
-    public float attackRange;
-    public float attackMoveSpeed;
-    
-    [Header("Idle data")] public float idleTime;
     [Header("Move data")] 
     public float moveSpeed;
+    public float turnSpeed;
     public float chaseSpeed;
-    public bool manualMovement;
+    private bool _manualMovement;
+    private bool _manualRotation;
     
     [SerializeField] private Transform[] patrolPoints;
     private int _currentPatrolIndex;
@@ -66,20 +64,18 @@ public class Enemy : MonoBehaviour
         return destination;
     }
 
-    private void OnDrawGizmos()
+    protected virtual void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, aggresionRange);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
-    public void ActiveManalMovement(bool manualMovement) => this.manualMovement = manualMovement;
-
-    public bool ManualMovementActive() => manualMovement;
+    public void ActivateManualMovement(bool manualMovement) => _manualMovement = manualMovement;
+    public bool ManualMovementActive() => _manualMovement;
+    public void ActivateManualRotation(bool manualRotation) => _manualRotation = manualRotation;
+    public bool ManualRotationActive() => _manualRotation;
     
     public void AnimationTrigger() => stateMachine.currentState.AnimationTrigger();
     public bool PlayerInAggresionRange() => Vector3.Distance(transform.position, player.position) < aggresionRange;
-    public bool PlayerInAttackRange() => Vector3.Distance(transform.position, player.position) < attackRange;
     
     public Quaternion FaceTarget(Vector3 target)
     {
