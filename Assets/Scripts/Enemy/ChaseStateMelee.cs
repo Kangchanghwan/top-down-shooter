@@ -20,6 +20,11 @@ public class ChaseStateMelee : EnemyState
     {
         base.Update();
 
+        if (enemy.PlayerInAttackRange())
+        {
+            stateMachine.ChangeState(enemy.attackState);
+        }
+        
         enemy.transform.rotation = enemy.FaceTarget(GetNextPathPoint());
         
         if (CanUpdateDestination())

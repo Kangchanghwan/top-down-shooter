@@ -11,4 +11,8 @@ public class EnemyAnimationEvents : MonoBehaviour
     }
 
     public void AnimationTrigger() => enemy.AnimationTrigger();
+
+    public void StartManualMovement() => enemy.ActiveManalMovement(true);
+    public void StopManualMovement() => enemy.ActiveManalMovement(false);
+    
 }
