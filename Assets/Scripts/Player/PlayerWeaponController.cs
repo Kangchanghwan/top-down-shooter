@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -121,6 +122,7 @@ public class PlayerWeaponController : MonoBehaviour
             return;
         }
         FireSingleBullet();
+        TriggerEnemyDodge();
     }
 
     private IEnumerator BurstFire()
@@ -189,6 +191,21 @@ public class PlayerWeaponController : MonoBehaviour
     public void SetWeaponReady(bool ready) => _weaponReady = ready;
     public bool WeaponReady() => _weaponReady;
 
+    private void TriggerEnemyDodge()
+    {
+        Vector3 rayOrigin = GunPoint().position;
+        Vector3 rayDirection = BulletDirection();
+
+        if (Physics.Raycast(rayOrigin, rayDirection, out var hit, Mathf.Infinity))
+        {
+            EnemyMelee enemyMelee = hit.collider.gameObject.GetComponentInParent<EnemyMelee>();
+
+            if (enemyMelee != null)
+            {
+                enemyMelee.ActiveDodgeRoll();
+            }
+        }
+    }
     
     #region  inputEvent
 

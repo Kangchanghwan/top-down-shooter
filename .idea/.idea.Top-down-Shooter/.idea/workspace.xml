@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33ad7cd2-9469-4214-8de9-cfffd40c4278" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/EnemyShield.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Top-down-Shooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Top-down-Shooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Bullet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/ChaseStateMelee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/ChaseStateMelee.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyRagdoll.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyRagdoll.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerWeaponController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerWeaponController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,13 +42,17 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/AttackStateMelee.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Users/gangchanghwan/Documents/Unity/Top-down-Shooter/Assets/Scripts/Enemy/AttackStateMelee.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/gangchanghwan/Documents/Unity/Top-down-Shooter/Assets/Scripts/Enemy/Enemy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/gangchanghwan/Documents/Unity/Top-down-Shooter/Assets/Scripts/Enemy/Enemy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/gangchanghwan/Documents/Unity/Top-down-Shooter/Assets/Scripts/Enemy/EnemyAnimationEvents.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/gangchanghwan/Documents/Unity/Top-down-Shooter/Assets/Scripts/Enemy/EnemyMelee.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/gangchanghwan/Documents/Unity/Top-down-Shooter/Assets/Scripts/Enemy/EnemyMelee.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/gangchanghwan/Documents/Unity/Top-down-Shooter/Assets/Scripts/Enemy/EnemyRagdoll.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/gangchanghwan/Documents/Unity/Top-down-Shooter/Assets/Scripts/Enemy/RecoveryStateMelee.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemyShield.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Target.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Udemy+course+-+Top-Down+Shooter+-+Optimization+and+workflow+-+Completed/Udemy course - Top-Down Shooter/Assets/Scripts/Weapon.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Udemy+course+-+Top-Down+Shooter+-+Optimization+and+workflow+-+Completed/Udemy course - Top-Down Shooter/Assets/Scripts/Weapon_Data.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/28d356fbc3fd4178a60b7941b08616c68c00/c2/975aab04/Input.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/28d356fbc3fd4178a60b7941b08616c68c00/c2/975aab04/Input.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -135,7 +141,7 @@
       <updated>1753342215081</updated>
       <workItem from="1753342217306" duration="7359000" />
       <workItem from="1754449396290" duration="12070000" />
-      <workItem from="1754576136069" duration="41021000" />
+      <workItem from="1754576136069" duration="47401000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 총 장전, 스왑 애니메이션 구현">
       <option name="closed" value="true" />
@@ -329,7 +335,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754878116194</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="feat: 간단한 체력시스템 추가">
+      <option name="closed" value="true" />
+      <created>1754879611265</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1754879611265</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -386,7 +400,8 @@
     <MESSAGE value="feat: 추적 후 근거리 공격 기능 추가" />
     <MESSAGE value="feat: 공격 타입 랜덤설정" />
     <MESSAGE value="feat: 적 ragdoll 설정 및 dead state 상태 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 적 ragdoll 설정 및 dead state 상태 추가" />
+    <MESSAGE value="feat: 간단한 체력시스템 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 간단한 체력시스템 추가" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

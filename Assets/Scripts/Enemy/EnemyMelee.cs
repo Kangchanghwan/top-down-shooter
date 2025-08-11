@@ -18,6 +18,11 @@ public enum AttackTypeMelee
 {
     Close, Charge
 }
+
+public enum EnemyMeleeType
+{
+    Regular, Shield, Dodge
+}
 public class EnemyMelee: Enemy
 {
         
@@ -28,6 +33,12 @@ public class EnemyMelee: Enemy
     public AttackStateMelee attackState { get; private set; }
     public DeadStateMelee deadState { get; private set; }
 
+    [Header("Enemy Settings")]
+    public EnemyMeleeType meleeType;
+    public Transform shieldTransform;
+    public float dodgeCooldown;
+    private float _lastTimeDodge;
+    
     [Header("Attack Data")] 
     public AttackData attackData;
     public List<AttackData> attackDatas;
@@ -45,7 +56,6 @@ public class EnemyMelee: Enemy
         chaseState = new ChaseStateMelee(this, stateMachine, "Chase");
         attackState = new AttackStateMelee(this, stateMachine, "Attack");
         deadState = new DeadStateMelee(this, stateMachine, "Idle");
-        
     }
 
     protected override void Start()
@@ -53,6 +63,7 @@ public class EnemyMelee: Enemy
         base.Start();
         
         stateMachine.Initialize(idleState);
+        InitializeSpeciality();
     }
 
     protected override void Update()
@@ -69,6 +80,15 @@ public class EnemyMelee: Enemy
         Gizmos.DrawWireSphere(transform.position, attackData.attackRange);
     }
 
+    private void InitializeSpeciality()
+    {
+        if (meleeType == EnemyMeleeType.Shield)
+        {
+            anim.SetFloat("ChaseIndex", 1 );
+            shieldTransform.gameObject.SetActive(true);
+        }
+    }
+    
     public override void GetHit()
     {
         base.GetHit();
@@ -79,6 +99,22 @@ public class EnemyMelee: Enemy
     }
 
     public bool PlayerInAttackRange() => Vector3.Distance(transform.position, player.position) < attackData.attackRange;
+
+    public void ActiveDodgeRoll()
+    {
+        if (meleeType != EnemyMeleeType.Dodge) return;
+        
+        if (stateMachine.currentState != chaseState) return;
+
+        if (Vector3.Distance(transform.position, player.position) < 2f) return;
+        
+        if (Time.time > _lastTimeDodge + dodgeCooldown)
+        {
+            _lastTimeDodge = Time.time;
+            anim.SetTrigger(("DodgeRoll"));   
+        }
+    }
+    
     public void PullWeapon()
     {
         hiddenWeapon.gameObject.SetActive(false);
