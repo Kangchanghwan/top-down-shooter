@@ -4,27 +4,27 @@ using UnityEngine;
 public class EnemyRagdoll : MonoBehaviour
 {
     [SerializeField] private Transform ragdollParent;
-    private Collider[] _ragdollColliders;
-    private Rigidbody[] _ragdollRigidBodies;
+    [SerializeField] private Collider[] ragdollColliders;
+    [SerializeField] private Rigidbody[] ragdollRigidBodies;
 
     private void Awake()
     {
-        _ragdollColliders = GetComponentsInChildren<Collider>();
-        _ragdollRigidBodies = GetComponentsInChildren<Rigidbody>();
+        ragdollColliders = GetComponentsInChildren<Collider>();
+        ragdollRigidBodies = GetComponentsInChildren<Rigidbody>();
         
         RagdollActive(false);
     }
 
     public void RagdollActive(bool active)
     {
-        foreach (var rb in _ragdollRigidBodies)
+        foreach (var rb in ragdollRigidBodies)
         {
             rb.isKinematic = !active;
         }
     }   
     public void CollidersActive(bool active)
     {
-        foreach (var collider in _ragdollColliders)
+        foreach (var collider in ragdollColliders)
         {
             collider.enabled = active;
         }

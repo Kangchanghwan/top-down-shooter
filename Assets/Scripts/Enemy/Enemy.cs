@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] protected int healthPoint = 25;
+    
     [Header("Idle data")] 
     public float idleTime;
     public float aggresionRange;
@@ -67,6 +69,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void GetHit()
     {
+        healthPoint--;
     }
 
     public virtual void HitImpact(Vector3 force, Vector3 hitPoint, Rigidbody rb)
