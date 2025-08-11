@@ -37,6 +37,8 @@ public class EnemyMelee: Enemy
 
     #endregion
 
+    private EnemyVisuals _enemyVisuals;
+    
     [Header("Enemy Settings")]
     public EnemyMeleeType meleeType;
     public Transform shieldTransform;
@@ -62,6 +64,8 @@ public class EnemyMelee: Enemy
     {
         base.Awake();
 
+        _enemyVisuals = GetComponent<EnemyVisuals>();
+
         idleState = new IdleStateMelee(this, stateMachine, "Idle");
         moveState = new MoveStateMelee(this, stateMachine, "Move");
         recoveryState = new RecoveryStateMelee(this, stateMachine, "Recovery");
@@ -77,6 +81,8 @@ public class EnemyMelee: Enemy
         
         stateMachine.Initialize(idleState);
         InitializeSpeciality();
+        
+        _enemyVisuals.SetupLook();
     }
 
     protected override void Update()

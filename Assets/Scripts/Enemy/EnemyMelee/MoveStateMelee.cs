@@ -26,18 +26,12 @@ public class MoveStateMelee : EnemyState
     {
         base.Update();
 
-        // if (enemy.PlayerInAggresionRange())
-        // {
-        //     stateMachine.ChangeState(enemy.recoveryState);
-        //     return;
-        // }
-        //
-        // enemy.FaceTarget(GetNextPathPoint());
-        //
-        // if (enemy.agent.remainingDistance <= enemy.agent.stoppingDistance + 0.05f)
-        // {
-        //     stateMachine.ChangeState(enemy.idleState);
-        // }
+        enemy.FaceTarget(GetNextPathPoint());
+        
+        if (enemy.agent.remainingDistance <= enemy.agent.stoppingDistance + 0.05f)
+        {
+            stateMachine.ChangeState(enemy.idleState);
+        }
     }
 
 
