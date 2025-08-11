@@ -21,7 +21,7 @@ public enum AttackTypeMelee
 
 public enum EnemyMeleeType
 {
-    Regular, Shield, Dodge
+    Regular, Shield, Dodge, AxeThrow
 }
 public class EnemyMelee: Enemy
 {
@@ -32,12 +32,21 @@ public class EnemyMelee: Enemy
     public ChaseStateMelee chaseState { get; private set; }
     public AttackStateMelee attackState { get; private set; }
     public DeadStateMelee deadState { get; private set; }
+    public AbilityStateMelee abilityState { get; private set; }
 
     [Header("Enemy Settings")]
     public EnemyMeleeType meleeType;
     public Transform shieldTransform;
     public float dodgeCooldown;
     private float _lastTimeDodge;
+    public Transform axeStartPoint;
+
+    [Header("Axe Throw Ability")] 
+    public GameObject axePrefab;
+    public float axeFlySpeed;
+    public float axeAimTimer;
+    private float _lastTimeAxeThrown;
+    public float axtThrowCooldown;
     
     [Header("Attack Data")] 
     public AttackData attackData;
@@ -56,6 +65,7 @@ public class EnemyMelee: Enemy
         chaseState = new ChaseStateMelee(this, stateMachine, "Chase");
         attackState = new AttackStateMelee(this, stateMachine, "Attack");
         deadState = new DeadStateMelee(this, stateMachine, "Idle");
+        abilityState = new AbilityStateMelee(this, stateMachine, "AxeThrow");
     }
 
     protected override void Start()
@@ -78,6 +88,13 @@ public class EnemyMelee: Enemy
         
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, attackData.attackRange);
+    }
+    
+    public override void AbilityTrigger()
+    {
+        base.AbilityTrigger();
+        moveSpeed = moveSpeed * .6f;
+        pulledWeapon.gameObject.SetActive(false);
     }
 
     private void InitializeSpeciality()
@@ -107,12 +124,43 @@ public class EnemyMelee: Enemy
         if (stateMachine.currentState != chaseState) return;
 
         if (Vector3.Distance(transform.position, player.position) < 2f) return;
+
+        float dodgeAnimationDuration = GetAnimationClipDuration("Dodge roll");
+        print(dodgeAnimationDuration);
         
-        if (Time.time > _lastTimeDodge + dodgeCooldown)
+        if (Time.time > _lastTimeDodge + dodgeAnimationDuration + dodgeCooldown)
         {
             _lastTimeDodge = Time.time;
             anim.SetTrigger(("DodgeRoll"));   
         }
+    }
+
+    public bool CanThrowAxe()
+    {
+        if (meleeType != EnemyMeleeType.AxeThrow) return false;
+        
+        if (Time.time > _lastTimeAxeThrown + axtThrowCooldown)
+        {
+            _lastTimeAxeThrown = Time.time;
+            return true;
+        }
+
+        return false;
+    }
+
+    private float GetAnimationClipDuration(string clipName)
+    {
+        AnimationClip[] clips = anim.runtimeAnimatorController.animationClips;
+
+        foreach (var clip in clips)
+        {
+            if (clip.name == clipName)
+            {
+                return clip.length;
+            }
+        }
+        print(clipName + "Not Found");
+        return 0f;
     }
     
     public void PullWeapon()

@@ -95,6 +95,12 @@ public class Enemy : MonoBehaviour
     public bool ManualRotationActive() => _manualRotation;
     
     public void AnimationTrigger() => stateMachine.currentState.AnimationTrigger();
+
+    public virtual void AbilityTrigger()
+    {
+        stateMachine.currentState.AbilityTrigger();
+    }
+    
     public bool PlayerInAggresionRange() => Vector3.Distance(transform.position, player.position) < aggresionRange;
     
     public Quaternion FaceTarget(Vector3 target)

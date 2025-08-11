@@ -22,7 +22,11 @@ public class RecoveryStateMelee : EnemyState
         enemy.transform.rotation = enemy.FaceTarget(enemy.player.position);
         if (triggerCalled == true)
         {
-            if (enemy.PlayerInAttackRange())
+            if (enemy.CanThrowAxe())
+            {
+                stateMachine.ChangeState(enemy.abilityState);
+            }
+            else if (enemy.PlayerInAttackRange())
             {
                 stateMachine.ChangeState(enemy.attackState);
             }

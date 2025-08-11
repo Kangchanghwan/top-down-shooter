@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33ad7cd2-9469-4214-8de9-cfffd40c4278" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/EnemyShield.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/AbilityStateMelee.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/EnemyAxe.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Top-down-Shooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Top-down-Shooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Bullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/ChaseStateMelee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/ChaseStateMelee.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyAnimationEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyAnimationEvents.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerWeaponController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerWeaponController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/RecoveryStateMelee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/RecoveryStateMelee.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,18 +38,9 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bullet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CameraManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/AttackStateMelee.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Users/gangchanghwan/Documents/Unity/Top-down-Shooter/Assets/Scripts/Enemy/AttackStateMelee.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/gangchanghwan/Documents/Unity/Top-down-Shooter/Assets/Scripts/Enemy/Enemy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/gangchanghwan/Documents/Unity/Top-down-Shooter/Assets/Scripts/Enemy/Enemy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/gangchanghwan/Documents/Unity/Top-down-Shooter/Assets/Scripts/Enemy/EnemyAnimationEvents.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/gangchanghwan/Documents/Unity/Top-down-Shooter/Assets/Scripts/Enemy/EnemyMelee.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/gangchanghwan/Documents/Unity/Top-down-Shooter/Assets/Scripts/Enemy/EnemyMelee.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/gangchanghwan/Documents/Unity/Top-down-Shooter/Assets/Scripts/Enemy/EnemyRagdoll.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/gangchanghwan/Documents/Unity/Top-down-Shooter/Assets/Scripts/Enemy/RecoveryStateMelee.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemyShield.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Target.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Udemy+course+-+Top-Down+Shooter+-+Optimization+and+workflow+-+Completed/Udemy course - Top-Down Shooter/Assets/Scripts/Weapon.cs" root0="SKIP_HIGHLIGHTING" />
@@ -63,23 +56,23 @@
     <option name="flattenModules" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "CodeLensConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CodeLensConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.0.46f1/Unity.app/Contents/MacOS/Unity" />
@@ -141,7 +134,8 @@
       <updated>1753342215081</updated>
       <workItem from="1753342217306" duration="7359000" />
       <workItem from="1754449396290" duration="12070000" />
-      <workItem from="1754576136069" duration="47401000" />
+      <workItem from="1754576136069" duration="47505000" />
+      <workItem from="1754905584143" duration="5462000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 총 장전, 스왑 애니메이션 구현">
       <option name="closed" value="true" />
@@ -343,7 +337,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754879611265</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="feat: 회피하는 적 타입 구현">
+      <option name="closed" value="true" />
+      <created>1754905393486</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1754905393486</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -376,7 +378,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat: 총 장전, 스왑 애니메이션 구현" />
     <MESSAGE value="feat : 총알 이펙트 / 총 슬롯 시스템 구현" />
     <MESSAGE value="feat: 총알 장전 기능" />
     <MESSAGE value="fix: current Weapon 을 참조하여 WeaponModel Active를 설정하는 방식으로 변경" />
@@ -401,7 +402,8 @@
     <MESSAGE value="feat: 공격 타입 랜덤설정" />
     <MESSAGE value="feat: 적 ragdoll 설정 및 dead state 상태 추가" />
     <MESSAGE value="feat: 간단한 체력시스템 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 간단한 체력시스템 추가" />
+    <MESSAGE value="feat: 회피하는 적 타입 구현" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 회피하는 적 타입 구현" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
