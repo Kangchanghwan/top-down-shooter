@@ -30,7 +30,7 @@ public class AbilityStateMelee: EnemyState
         
         if (_enemy.ManualRotationActive())
         {
-            _enemy.transform.rotation = _enemy.FaceTarget(enemyBase.player.position);
+            _enemy.FaceTarget(enemyBase.player.position);
             _movementDirection = _enemy.transform.position + (_enemy.transform.forward * MAX_MOVEMENT_DISTANCE);
         }
         

@@ -25,7 +25,8 @@ public enum EnemyMeleeType
 }
 public class EnemyMelee: Enemy
 {
-        
+    #region States
+
     public IdleStateMelee idleState { get; private set; }
     public MoveStateMelee moveState { get; private set; }
     public RecoveryStateMelee recoveryState { get; private set; }
@@ -34,11 +35,13 @@ public class EnemyMelee: Enemy
     public DeadStateMelee deadState { get; private set; }
     public AbilityStateMelee abilityState { get; private set; }
 
+    #endregion
+
     [Header("Enemy Settings")]
     public EnemyMeleeType meleeType;
     public Transform shieldTransform;
     public float dodgeCooldown;
-    private float _lastTimeDodge;
+    private float _lastTimeDodge = -10f;
     public Transform axeStartPoint;
 
     [Header("Axe Throw Ability")] 
@@ -79,9 +82,22 @@ public class EnemyMelee: Enemy
     protected override void Update()
     {
         base.Update();
-        
         stateMachine.currentState.Update();
+        
+        if (ShouldEnterBattleMode())
+        {
+            EnterBattleMode();
+        }
     }
+
+    public override void EnterBattleMode()
+    {
+        if (inBattleMode) return;
+        
+        base.EnterBattleMode();
+        stateMachine.ChangeState(recoveryState);
+    }
+
     protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
@@ -125,8 +141,7 @@ public class EnemyMelee: Enemy
 
         if (Vector3.Distance(transform.position, player.position) < 2f) return;
 
-        float dodgeAnimationDuration = GetAnimationClipDuration("Dodge roll");
-        print(dodgeAnimationDuration);
+        float dodgeAnimationDuration = GetAnimationClipDuration("Dodge Roll (Not Read-Only)");
         
         if (Time.time > _lastTimeDodge + dodgeAnimationDuration + dodgeCooldown)
         {

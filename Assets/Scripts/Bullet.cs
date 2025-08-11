@@ -78,7 +78,7 @@ public class Bullet : MonoBehaviour
             Rigidbody hitRb = other.collider.attachedRigidbody;
             
             enemy.GetHit();
-            enemy.HitImpact(force, other.contacts[0].point, hitRb);
+            enemy.DeathImpact(force, other.contacts[0].point, hitRb);
         }
 
     }
