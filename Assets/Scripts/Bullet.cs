@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public float impactForce;
+
     private Rigidbody _rigidbody;
     private TrailRenderer _trailRenderer;
     private MeshRenderer _meshRenderer;
     private BoxCollider _boxCollider;
-    
+
     [SerializeField] private GameObject bulletImpactFx;
 
     private Vector3 _startPosition;
@@ -39,7 +41,7 @@ public class Bullet : MonoBehaviour
     private void DisableBulletIfNeeded()
     {
         if (Vector3.Distance(
-                _startPosition, transform.position) > _flyDistance && 
+                _startPosition, transform.position) > _flyDistance &&
             _bulletDisabled == false)
         {
             _boxCollider.enabled = false;
@@ -58,21 +60,33 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        Enemy enemy = other.gameObject.GetComponentInParent<Enemy>();
+
+        if (enemy != null)
+        {
+            Vector3 force = _rigidbody.linearVelocity.normalized * impactForce;
+            Rigidbody hitRb = other.collider.attachedRigidbody;
+            
+            enemy.GetHit();
+            enemy.HitImpact(force, other.contacts[0].point, hitRb);
+        }
+
         CreateImpactFx(other);
         ObjectPool.instance.ReturnObject(gameObject);
     }
-   
-    public void BulletSetup(float flyDistance)
+
+    public void BulletSetup(float flyDistance, float impactForce)
     {
+        this.impactForce = impactForce;
+
         _bulletDisabled = false;
         _boxCollider.enabled = true;
         _meshRenderer.enabled = true;
-        
+
         _trailRenderer.time = .25f;
         _startPosition = transform.position;
         _flyDistance = flyDistance + .5f; // 이 메직넘버는 UpdateAimVisuals()함수에서 레이저 팁의 길이를 더했습니다.
     }
-
 
 
     private void CreateImpactFx(Collision other)
@@ -84,7 +98,7 @@ public class Bullet : MonoBehaviour
             GameObject newImpactFx = ObjectPool.instance.GetObject(bulletImpactFx);
             newImpactFx.transform.position = contact.point;
             newImpactFx.transform.rotation = Quaternion.LookRotation(contact.normal);
-            
+
             ObjectPool.instance.ReturnObject(newImpactFx, 1f);
         }
     }

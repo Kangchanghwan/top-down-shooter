@@ -26,6 +26,7 @@ public class EnemyMelee: Enemy
     public RecoveryStateMelee recoveryState { get; private set; }
     public ChaseStateMelee chaseState { get; private set; }
     public AttackStateMelee attackState { get; private set; }
+    public DeadStateMelee deadState { get; private set; }
 
     [Header("Attack Data")] 
     public AttackData attackData;
@@ -43,6 +44,8 @@ public class EnemyMelee: Enemy
         recoveryState = new RecoveryStateMelee(this, stateMachine, "Recovery");
         chaseState = new ChaseStateMelee(this, stateMachine, "Chase");
         attackState = new AttackStateMelee(this, stateMachine, "Attack");
+        deadState = new DeadStateMelee(this, stateMachine, "Idle");
+        
     }
 
     protected override void Start()
@@ -65,6 +68,12 @@ public class EnemyMelee: Enemy
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, attackData.attackRange);
     }
+
+    public override void GetHit()
+    {
+        stateMachine.ChangeState(deadState);
+    }
+
     public bool PlayerInAttackRange() => Vector3.Distance(transform.position, player.position) < attackData.attackRange;
     public void PullWeapon()
     {
