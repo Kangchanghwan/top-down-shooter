@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33ad7cd2-9469-4214-8de9-cfffd40c4278" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Data/EnemyMeleeWeaponData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Top-down-Shooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Top-down-Shooter/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyAnimationEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyAnimationEvents.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee/AttackStateMelee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee/AttackStateMelee.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee/EnemyMelee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee/EnemyMelee.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyVisuals.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyVisuals.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyWeaponModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyWeaponModel.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,9 +38,17 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Users/gangchanghwan/Documents/Unity/Top-down-Shooter/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bullet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CameraManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/gangchanghwan/Documents/Unity/Top-down-Shooter/Assets/Scripts/Enemy/Enemy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/gangchanghwan/Documents/Unity/Top-down-Shooter/Assets/Scripts/Enemy/EnemyMelee/AttackStateMelee.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/gangchanghwan/Documents/Unity/Top-down-Shooter/Assets/Scripts/Enemy/EnemyMelee/EnemyMelee.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/gangchanghwan/Documents/Unity/Top-down-Shooter/Assets/Scripts/Enemy/EnemyWeaponModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Target.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Udemy+course+-+Top-Down+Shooter+-+Enemy+Variants+-+Completed+/Udemy course - Top-Down Shooter/Assets/Scripts/Enemy/Enemy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Udemy+course+-+Top-Down+Shooter+-+Enemy+Variants+-+Completed+/Udemy course - Top-Down Shooter/Assets/Scripts/Enemy/Enemy_Melee/AttackState_Melee.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Udemy+course+-+Top-Down+Shooter+-+Enemy+Variants+-+Completed+/Udemy course - Top-Down Shooter/Assets/Scripts/Enemy/Enemy_Melee/Enemy_Melee.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Udemy+course+-+Top-Down+Shooter+-+Optimization+and+workflow+-+Completed/Udemy course - Top-Down Shooter/Assets/Scripts/Weapon.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Udemy+course+-+Top-Down+Shooter+-+Optimization+and+workflow+-+Completed/Udemy course - Top-Down Shooter/Assets/Scripts/Weapon_Data.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/28d356fbc3fd4178a60b7941b08616c68c00/c2/975aab04/Input.cs" root0="FORCE_HIGHLIGHTING" />
@@ -131,7 +142,7 @@
       <workItem from="1753342217306" duration="7359000" />
       <workItem from="1754449396290" duration="12070000" />
       <workItem from="1754576136069" duration="47505000" />
-      <workItem from="1754905584143" duration="19568000" />
+      <workItem from="1754905584143" duration="29288000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 총 장전, 스왑 애니메이션 구현">
       <option name="closed" value="true" />
@@ -389,7 +400,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754963285207</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="feat: 적 공격 trail 기능 구현">
+      <option name="closed" value="true" />
+      <created>1754964793268</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1754964793268</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -422,7 +441,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat: 자동 / 수동 총발사 타입 구현" />
     <MESSAGE value="feat: 총알 퍼지는 효과 구현" />
     <MESSAGE value="feat: 점사 / 샷건 구현" />
     <MESSAGE value="feat: 총알 거리 기능 구현" />
@@ -447,7 +465,8 @@
     <MESSAGE value="feat: 적 꾸미기 랜덤 적용 구현" />
     <MESSAGE value="현" />
     <MESSAGE value="feat: 무기 없는 적 유형 추가 구현" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 무기 없는 적 유형 추가 구현" />
+    <MESSAGE value="feat: 적 공격 trail 기능 구현" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 적 공격 trail 기능 구현" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [System.Serializable]
-public struct AttackData
+public struct AttackDataEnemyMelee
 {
     public string attackName;
     public float attackRange;
@@ -37,7 +38,7 @@ public class EnemyMelee: Enemy
 
     #endregion
 
-    public EnemyVisuals enemyVisuals { get; private set; }
+    public EnemyVisuals visuals { get; private set; }
 
     [Header("Enemy Settings")]
     public EnemyMeleeType meleeType;
@@ -54,8 +55,8 @@ public class EnemyMelee: Enemy
     public float axtThrowCooldown;
     
     [Header("Attack Data")] 
-    public AttackData attackData;
-    public List<AttackData> attackDatas;
+    public AttackDataEnemyMelee attackDataEnemyMelee;
+    public List<AttackDataEnemyMelee> attackDatas;
     
     [SerializeField] private Transform hiddenWeapon;
     
@@ -63,7 +64,7 @@ public class EnemyMelee: Enemy
     {
         base.Awake();
 
-        enemyVisuals = GetComponent<EnemyVisuals>();
+        visuals = GetComponent<EnemyVisuals>();
 
         idleState = new IdleStateMelee(this, stateMachine, "Idle");
         moveState = new MoveStateMelee(this, stateMachine, "Move");
@@ -77,11 +78,12 @@ public class EnemyMelee: Enemy
     protected override void Start()
     {
         base.Start();
-        
         stateMachine.Initialize(idleState);
-        InitializeSpeciality();
+        ResetCooldown();
         
-        enemyVisuals.SetupLook();
+        InitializePerk();
+        visuals.SetupLook();
+        UpdateAttackData();
     }
 
     protected override void Update()
@@ -108,7 +110,7 @@ public class EnemyMelee: Enemy
         base.OnDrawGizmos();
         
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, attackData.attackRange);
+        Gizmos.DrawWireSphere(transform.position, attackDataEnemyMelee.attackRange);
     }
     
     public override void AbilityTrigger()
@@ -118,23 +120,34 @@ public class EnemyMelee: Enemy
         EnableWeaponModel(false);
     }
 
-    private void InitializeSpeciality()
+    public void UpdateAttackData()
+    {
+        EnemyWeaponModel currentWeapon = visuals.currentWeaponModel.GetComponent<EnemyWeaponModel>();
+
+        if (currentWeapon.weaponData != null)
+        {
+            attackDatas = new List<AttackDataEnemyMelee>(currentWeapon.weaponData.attackData);
+            turnSpeed = currentWeapon.weaponData.turnSpeed;
+        }
+    }
+    
+    private void InitializePerk()
     {
         if (meleeType == EnemyMeleeType.AxeThrow)
         {
-            enemyVisuals.SetUpWeaponType(EnemyWeaponModelType.Throw);
+            visuals.SetUpWeaponType(EnemyWeaponModelType.Throw);
         }
         
         if (meleeType == EnemyMeleeType.Shield)
         {
             anim.SetFloat("ChaseIndex", 1 );
             shieldTransform.gameObject.SetActive(true);
-            enemyVisuals.SetUpWeaponType(EnemyWeaponModelType.OneHand);
+            visuals.SetUpWeaponType(EnemyWeaponModelType.OneHand);
         }
 
         if (meleeType == EnemyMeleeType.Dodge)
         {
-            enemyVisuals.SetUpWeaponType(EnemyWeaponModelType.Unarmed);
+            visuals.SetUpWeaponType(EnemyWeaponModelType.Unarmed);
         }
     }
     
@@ -147,7 +160,6 @@ public class EnemyMelee: Enemy
         }
     }
 
-    public bool PlayerInAttackRange() => Vector3.Distance(transform.position, player.position) < attackData.attackRange;
 
     public void ActiveDodgeRoll()
     {
@@ -193,9 +205,17 @@ public class EnemyMelee: Enemy
         print(clipName + "Not Found");
         return 0f;
     }
-    
+    private void ResetCooldown()
+    {
+        _lastTimeDodge -= dodgeCooldown;
+        _lastTimeAxeThrown -= axtThrowCooldown;
+    }
+
+
+    public bool PlayerInAttackRange() => Vector3.Distance(transform.position, player.position) < attackDataEnemyMelee.attackRange;
+
     public void EnableWeaponModel(bool active)
     {
-        enemyVisuals.currentWeaponModel.gameObject.SetActive(active);
+        visuals.currentWeaponModel.gameObject.SetActive(active);
     }
 }

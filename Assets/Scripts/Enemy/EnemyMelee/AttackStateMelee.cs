@@ -20,17 +20,17 @@ public class AttackStateMelee : EnemyState
     public override void Enter()
     {
         base.Enter();
+        _enemy.UpdateAttackData();
         _enemy.EnableWeaponModel(true);
-        _enemy.enemyVisuals.EnableWeaponTrail(true);
+        _enemy.visuals.EnableWeaponTrail(true);
 
-        _attackMoveSpeed = _enemy.attackData.moveSpeed;
-        _enemy.anim.SetFloat("AttackAnimationSpeed", _enemy.attackData.animationSpeed);
-        _enemy.anim.SetFloat("AttackIndex", _enemy.attackData.attackIndex);
+        _attackMoveSpeed = _enemy.attackDataEnemyMelee.moveSpeed;
+        _enemy.anim.SetFloat("AttackAnimationSpeed", _enemy.attackDataEnemyMelee.animationSpeed);
+        _enemy.anim.SetFloat("AttackIndex", _enemy.attackDataEnemyMelee.attackIndex);
         _enemy.anim.SetFloat("SlashAttackIndex", Random.Range(0, 6));
 
         _enemy.agent.isStopped = true;
         _enemy.agent.velocity = Vector3.zero;
-        
         _attackDirection = _enemy.transform.position + (_enemy.transform.forward * MAX_ATTACK_DISTANCE);
     }
 
@@ -55,7 +55,11 @@ public class AttackStateMelee : EnemyState
        
         if (triggerCalled)
         {
-            if (_enemy.PlayerInAttackRange())
+            if (_enemy.CanThrowAxe())
+            {
+                stateMachine.ChangeState(_enemy.abilityState);
+            }
+            else if (_enemy.PlayerInAttackRange())
             {
                 stateMachine.ChangeState(_enemy.recoveryState);
             }
@@ -69,20 +73,19 @@ public class AttackStateMelee : EnemyState
     public override void Exit()
     {
         base.Exit();
-        _enemy.enemyVisuals.EnableWeaponTrail(false);
-
+        _enemy.visuals.EnableWeaponTrail(false);
         
         int recoveryIndex = PlayerClose() ? 1 : 0;
         _enemy.anim.SetFloat("RecoveryIndex", recoveryIndex);
 
-        _enemy.attackData = UpdatedAttackData();
+        _enemy.attackDataEnemyMelee = UpdatedAttackData();
     }
 
     private bool PlayerClose() => Vector3.Distance(_enemy.transform.position, _enemy.player.position) <= 1f;
 
-    private AttackData UpdatedAttackData()
+    private AttackDataEnemyMelee UpdatedAttackData()
     {
-        List<AttackData> validAttacks = new List<AttackData>(_enemy.attackDatas);
+        List<AttackDataEnemyMelee> validAttacks = new List<AttackDataEnemyMelee>(_enemy.attackDatas);
         if (PlayerClose())
         {
             validAttacks.RemoveAll(arg => arg.attackType == AttackTypeMelee.Charge);

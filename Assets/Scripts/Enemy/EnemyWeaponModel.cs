@@ -5,7 +5,8 @@ public class EnemyWeaponModel : MonoBehaviour
 {
     public EnemyWeaponModelType weaponType;
     public AnimatorOverrideController overrideController;
-
+    public EnemyMeleeWeaponData weaponData;
+    
     [SerializeField] private GameObject[] trailEffects;
 
     private void Awake()
