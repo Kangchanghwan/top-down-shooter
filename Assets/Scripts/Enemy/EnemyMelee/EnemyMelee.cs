@@ -37,8 +37,8 @@ public class EnemyMelee: Enemy
 
     #endregion
 
-    private EnemyVisuals _enemyVisuals;
-    
+    public EnemyVisuals enemyVisuals { get; private set; }
+
     [Header("Enemy Settings")]
     public EnemyMeleeType meleeType;
     public Transform shieldTransform;
@@ -63,7 +63,7 @@ public class EnemyMelee: Enemy
     {
         base.Awake();
 
-        _enemyVisuals = GetComponent<EnemyVisuals>();
+        enemyVisuals = GetComponent<EnemyVisuals>();
 
         idleState = new IdleStateMelee(this, stateMachine, "Idle");
         moveState = new MoveStateMelee(this, stateMachine, "Move");
@@ -81,7 +81,7 @@ public class EnemyMelee: Enemy
         stateMachine.Initialize(idleState);
         InitializeSpeciality();
         
-        _enemyVisuals.SetupLook();
+        enemyVisuals.SetupLook();
     }
 
     protected override void Update()
@@ -122,19 +122,19 @@ public class EnemyMelee: Enemy
     {
         if (meleeType == EnemyMeleeType.AxeThrow)
         {
-            _enemyVisuals.SetUpWeaponType(EnemyWeaponModelType.Throw);
+            enemyVisuals.SetUpWeaponType(EnemyWeaponModelType.Throw);
         }
         
         if (meleeType == EnemyMeleeType.Shield)
         {
             anim.SetFloat("ChaseIndex", 1 );
             shieldTransform.gameObject.SetActive(true);
-            _enemyVisuals.SetUpWeaponType(EnemyWeaponModelType.OneHand);
+            enemyVisuals.SetUpWeaponType(EnemyWeaponModelType.OneHand);
         }
 
         if (meleeType == EnemyMeleeType.Dodge)
         {
-            _enemyVisuals.SetUpWeaponType(EnemyWeaponModelType.Unarmed);
+            enemyVisuals.SetUpWeaponType(EnemyWeaponModelType.Unarmed);
         }
     }
     
@@ -196,6 +196,6 @@ public class EnemyMelee: Enemy
     
     public void EnableWeaponModel(bool active)
     {
-        _enemyVisuals.currentWeaponModel.gameObject.SetActive(active);
+        enemyVisuals.currentWeaponModel.gameObject.SetActive(active);
     }
 }

@@ -21,6 +21,7 @@ public class AttackStateMelee : EnemyState
     {
         base.Enter();
         _enemy.EnableWeaponModel(true);
+        _enemy.enemyVisuals.EnableWeaponTrail(true);
 
         _attackMoveSpeed = _enemy.attackData.moveSpeed;
         _enemy.anim.SetFloat("AttackAnimationSpeed", _enemy.attackData.animationSpeed);
@@ -68,7 +69,9 @@ public class AttackStateMelee : EnemyState
     public override void Exit()
     {
         base.Exit();
+        _enemy.enemyVisuals.EnableWeaponTrail(false);
 
+        
         int recoveryIndex = PlayerClose() ? 1 : 0;
         _enemy.anim.SetFloat("RecoveryIndex", recoveryIndex);
 

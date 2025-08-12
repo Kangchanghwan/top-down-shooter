@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="33ad7cd2-9469-4214-8de9-cfffd40c4278" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Top-down-Shooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Top-down-Shooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/AnimatorControllers/Player_AC.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/AnimatorControllers/Player_AC.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee/AttackStateMelee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee/AttackStateMelee.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee/EnemyMelee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee/EnemyMelee.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyVisuals.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyVisuals.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyWeaponModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyWeaponModel.cs" afterDir="false" />
     </list>
@@ -131,7 +131,7 @@
       <workItem from="1753342217306" duration="7359000" />
       <workItem from="1754449396290" duration="12070000" />
       <workItem from="1754576136069" duration="47505000" />
-      <workItem from="1754905584143" duration="18528000" />
+      <workItem from="1754905584143" duration="19568000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 총 장전, 스왑 애니메이션 구현">
       <option name="closed" value="true" />
@@ -381,7 +381,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754961096200</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="feat: 무기 없는 적 유형 추가 구현">
+      <option name="closed" value="true" />
+      <created>1754963285207</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1754963285207</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -414,8 +422,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat: 총알에 대하여 오브젝트 풀설정." />
-    <MESSAGE value="feat: fireRate 추가" />
     <MESSAGE value="feat: 자동 / 수동 총발사 타입 구현" />
     <MESSAGE value="feat: 총알 퍼지는 효과 구현" />
     <MESSAGE value="feat: 점사 / 샷건 구현" />
@@ -439,7 +445,9 @@
     <MESSAGE value="feat: 적 외형 랜덤 변경 기능 구현" />
     <MESSAGE value="feat: 적 무기 외형 랜덤 변경 구현" />
     <MESSAGE value="feat: 적 꾸미기 랜덤 적용 구현" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 적 꾸미기 랜덤 적용 구현" />
+    <MESSAGE value="현" />
+    <MESSAGE value="feat: 무기 없는 적 유형 추가 구현" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 무기 없는 적 유형 추가 구현" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
