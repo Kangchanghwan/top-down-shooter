@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public enum EnemyWeaponModelType
 {
-   OneHand, Throw
+   OneHand, Throw, Unarmed
 }
 
 public class EnemyVisuals : MonoBehaviour
@@ -102,8 +102,21 @@ public class EnemyVisuals : MonoBehaviour
       
       currentWeaponModel = filteredWeaponModels[randomIndex].gameObject;
       currentWeaponModel.SetActive(true);
+
+      OverrideAnimatorControllerIfCan();
    }
-   
+
+   private void OverrideAnimatorControllerIfCan()
+   {
+      AnimatorOverrideController overrideController =
+         currentWeaponModel.GetComponent<EnemyWeaponModel>().overrideController;
+
+      if (overrideController != null)
+      {
+         GetComponentInChildren<Animator>().runtimeAnimatorController = overrideController;
+      }
+   }
+
    private void SetupRandomColor()
    {
       int randomIndex = Random.Range(0, colorTextures.Length);
