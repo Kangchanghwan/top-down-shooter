@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public enum EnemyWeaponModelType
@@ -11,6 +12,11 @@ public enum EnemyWeaponModelType
 public class EnemyVisuals : MonoBehaviour
 {
 
+   [FormerlySerializedAs("corrupGameObjects")] [Header("Corruption Visuals")] [SerializeField]
+   private GameObject[] corruptionGameObjects;
+   [SerializeField] private int corruptionAmount;
+   
+   
    [Header("Weapon Model")] 
    [SerializeField] private EnemyWeaponModel[] weaponModels;
    [SerializeField] private EnemyWeaponModelType weaponType;
@@ -20,10 +26,26 @@ public class EnemyVisuals : MonoBehaviour
    [SerializeField] private Texture[] colorTextures;
    [SerializeField] private SkinnedMeshRenderer skinnedMeshRenderer;
 
-   private void Start()
+   private void Awake()
    {
       weaponModels = GetComponentsInChildren<EnemyWeaponModel>(true);
-      InvokeRepeating(nameof(SetupLook), 0, 1.5f);
+      CollectCorruptionCrystals();
+      
+   }
+
+   private void Start()
+   {
+  
+   }
+
+   private void CollectCorruptionCrystals()
+   {
+      EnemyCorruptionCrystal[] crystalComponents = GetComponentsInChildren<EnemyCorruptionCrystal>(true);
+      corruptionGameObjects = new GameObject[crystalComponents.Length];
+      for (var i = 0; i < crystalComponents.Length; i++)
+      {
+         corruptionGameObjects[i] = crystalComponents[i].gameObject;
+      }
    }
 
    public void SetUpWeaponType(EnemyWeaponModelType weaponType)
@@ -33,8 +55,33 @@ public class EnemyVisuals : MonoBehaviour
    {
       SetupRandomColor();
       SetupRandomWeapon();
+      SetupRandomCorruption();
    }
 
+   private void SetupRandomCorruption()
+   {
+      List<int> avalibleIndexs = new List<int>();
+      
+      for (int i = 0; i < corruptionGameObjects.Length; i++)
+      {
+         avalibleIndexs.Add(i);
+         corruptionGameObjects[i].SetActive(false);
+      }
+
+      for (int i = 0; i < corruptionAmount; i++)
+      {
+         if (avalibleIndexs.Count == 0)
+         {
+            break;
+         }
+         
+         int randomIndex = Random.Range(0, avalibleIndexs.Count);
+         corruptionGameObjects[randomIndex].SetActive(true);
+         avalibleIndexs.RemoveAt(randomIndex);
+      }
+      
+   }
+   
    private void SetupRandomWeapon()
    {
       foreach (var model in weaponModels)

@@ -58,7 +58,6 @@ public class EnemyMelee: Enemy
     public List<AttackData> attackDatas;
     
     [SerializeField] private Transform hiddenWeapon;
-    [SerializeField] private Transform pulledWeapon;
     
     protected override void Awake()
     {

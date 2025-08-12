@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33ad7cd2-9469-4214-8de9-cfffd40c4278" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyWeaponModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyCorruptionCrystal.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Top-down-Shooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Top-down-Shooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee/AbilityStateMelee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee/AbilityStateMelee.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee/AttackStateMelee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee/AttackStateMelee.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee/EnemyMelee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee/EnemyMelee.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyVisuals.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyVisuals.cs" afterDir="false" />
     </list>
@@ -42,6 +40,7 @@
     <setting file="file://$USER_HOME$/Downloads/Udemy+course+-+Top-Down+Shooter+-+Optimization+and+workflow+-+Completed/Udemy course - Top-Down Shooter/Assets/Scripts/Weapon.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Udemy+course+-+Top-Down+Shooter+-+Optimization+and+workflow+-+Completed/Udemy course - Top-Down Shooter/Assets/Scripts/Weapon_Data.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/28d356fbc3fd4178a60b7941b08616c68c00/c2/975aab04/Input.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -131,7 +130,7 @@
       <workItem from="1753342217306" duration="7359000" />
       <workItem from="1754449396290" duration="12070000" />
       <workItem from="1754576136069" duration="47505000" />
-      <workItem from="1754905584143" duration="14687000" />
+      <workItem from="1754905584143" duration="16962000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 총 장전, 스왑 애니메이션 구현">
       <option name="closed" value="true" />
@@ -365,7 +364,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754921587642</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="feat: 적 무기 외형 랜덤 변경 구현">
+      <option name="closed" value="true" />
+      <created>1754958943024</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1754958943024</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -398,7 +405,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat: Equip Weapon" />
     <MESSAGE value="feat: reload speed / equipment Speed 구현 &#10;- BackUp Weapon 구현" />
     <MESSAGE value="feat: 총알에 대하여 오브젝트 풀설정." />
     <MESSAGE value="feat: fireRate 추가" />
@@ -423,7 +429,8 @@
     <MESSAGE value="feat: 도끼 던지는 적 유형 구현" />
     <MESSAGE value="refactor: 폴더 구조 정리" />
     <MESSAGE value="feat: 적 외형 랜덤 변경 기능 구현" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 적 외형 랜덤 변경 기능 구현" />
+    <MESSAGE value="feat: 적 무기 외형 랜덤 변경 구현" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 적 무기 외형 랜덤 변경 구현" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
