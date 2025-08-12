@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33ad7cd2-9469-4214-8de9-cfffd40c4278" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyVisuals.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyWeaponModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Top-down-Shooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Top-down-Shooter/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee/AbilityStateMelee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee/AbilityStateMelee.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee/AttackStateMelee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee/AttackStateMelee.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee/EnemyMelee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee/EnemyMelee.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee/MoveStateMelee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyMelee/MoveStateMelee.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerWeaponController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerWeaponController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyVisuals.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyVisuals.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,8 +38,6 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bullet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CameraManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/AttackStateMelee.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemyShield.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Target.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Udemy+course+-+Top-Down+Shooter+-+Optimization+and+workflow+-+Completed/Udemy course - Top-Down Shooter/Assets/Scripts/Weapon.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Udemy+course+-+Top-Down+Shooter+-+Optimization+and+workflow+-+Completed/Udemy course - Top-Down Shooter/Assets/Scripts/Weapon_Data.cs" root0="SKIP_HIGHLIGHTING" />
@@ -132,7 +131,7 @@
       <workItem from="1753342217306" duration="7359000" />
       <workItem from="1754449396290" duration="12070000" />
       <workItem from="1754576136069" duration="47505000" />
-      <workItem from="1754905584143" duration="10780000" />
+      <workItem from="1754905584143" duration="14687000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 총 장전, 스왑 애니메이션 구현">
       <option name="closed" value="true" />
@@ -358,7 +357,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754914326312</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="feat: 적 외형 랜덤 변경 기능 구현">
+      <option name="closed" value="true" />
+      <created>1754921587642</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1754921587642</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -391,7 +398,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="fix: current Weapon 을 참조하여 WeaponModel Active를 설정하는 방식으로 변경" />
     <MESSAGE value="feat: Equip Weapon" />
     <MESSAGE value="feat: reload speed / equipment Speed 구현 &#10;- BackUp Weapon 구현" />
     <MESSAGE value="feat: 총알에 대하여 오브젝트 풀설정." />
@@ -416,7 +422,8 @@
     <MESSAGE value="feat: 회피하는 적 타입 구현" />
     <MESSAGE value="feat: 도끼 던지는 적 유형 구현" />
     <MESSAGE value="refactor: 폴더 구조 정리" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: 폴더 구조 정리" />
+    <MESSAGE value="feat: 적 외형 랜덤 변경 기능 구현" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 적 외형 랜덤 변경 기능 구현" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

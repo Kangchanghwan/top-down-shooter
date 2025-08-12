@@ -116,15 +116,21 @@ public class EnemyMelee: Enemy
     {
         base.AbilityTrigger();
         moveSpeed = moveSpeed * .6f;
-        pulledWeapon.gameObject.SetActive(false);
+        EnableWeaponModel(false);
     }
 
     private void InitializeSpeciality()
     {
+        if (meleeType == EnemyMeleeType.AxeThrow)
+        {
+            _enemyVisuals.SetUpWeaponType(EnemyWeaponModelType.Throw);
+        }
+        
         if (meleeType == EnemyMeleeType.Shield)
         {
             anim.SetFloat("ChaseIndex", 1 );
             shieldTransform.gameObject.SetActive(true);
+            _enemyVisuals.SetUpWeaponType(EnemyWeaponModelType.OneHand);
         }
     }
     
@@ -184,9 +190,8 @@ public class EnemyMelee: Enemy
         return 0f;
     }
     
-    public void PullWeapon()
+    public void EnableWeaponModel(bool active)
     {
-        hiddenWeapon.gameObject.SetActive(false);
-        pulledWeapon.gameObject.SetActive(true);
+        _enemyVisuals.currentWeaponModel.gameObject.SetActive(active);
     }
 }
