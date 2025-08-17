@@ -24,9 +24,9 @@ public class AttackStateMelee : EnemyState
         _enemy.EnableWeaponModel(true);
         _enemy.visuals.EnableWeaponTrail(true);
 
-        _attackMoveSpeed = _enemy.attackDataEnemyMelee.moveSpeed;
-        _enemy.anim.SetFloat("AttackAnimationSpeed", _enemy.attackDataEnemyMelee.animationSpeed);
-        _enemy.anim.SetFloat("AttackIndex", _enemy.attackDataEnemyMelee.attackIndex);
+        _attackMoveSpeed = _enemy.attackData.moveSpeed;
+        _enemy.anim.SetFloat("AttackAnimationSpeed", _enemy.attackData.animationSpeed);
+        _enemy.anim.SetFloat("AttackIndex", _enemy.attackData.attackIndex);
         _enemy.anim.SetFloat("SlashAttackIndex", Random.Range(0, 6));
 
         _enemy.agent.isStopped = true;
@@ -37,6 +37,7 @@ public class AttackStateMelee : EnemyState
     public override void Update()
     {
         base.Update();
+
 
         if (_enemy.ManualRotationActive())
         {
@@ -52,7 +53,6 @@ public class AttackStateMelee : EnemyState
                 _attackMoveSpeed * Time.deltaTime);
         }
         
-       
         if (triggerCalled)
         {
             if (_enemy.CanThrowAxe())
@@ -78,7 +78,7 @@ public class AttackStateMelee : EnemyState
         int recoveryIndex = PlayerClose() ? 1 : 0;
         _enemy.anim.SetFloat("RecoveryIndex", recoveryIndex);
 
-        _enemy.attackDataEnemyMelee = UpdatedAttackData();
+        _enemy.attackData = UpdatedAttackData();
     }
 
     private bool PlayerClose() => Vector3.Distance(_enemy.transform.position, _enemy.player.position) <= 1f;

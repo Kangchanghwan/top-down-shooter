@@ -4846,13 +4846,13 @@ MonoBehaviour:
   axeFlySpeed: 5
   axeAimTimer: 1
   axtThrowCooldown: 0
-  attackDataEnemyMelee:
+  attackData:
     attackName: 
-    attackRange: 1.4
-    moveSpeed: 0
-    attackIndex: 1
-    animationSpeed: 2.77
-    attackType: 0
+    attackRange: 1.5
+    moveSpeed: 1
+    attackIndex: 0
+    animationSpeed: 1.76
+    attackType: 1
   attackDatas:
   - attackName: Sword spin Attack
     attackRange: 1.5
@@ -15438,7 +15438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponType: 0
   overrideController: {fileID: 0}
-  weaponData: {fileID: 11400000, guid: d45a6d2f32e8c4910a8b0e3a97ca910a, type: 2}
+  weaponData: {fileID: 0}
   trailEffects:
   - {fileID: 1686340358}
 --- !u!1 &9155352018415604452

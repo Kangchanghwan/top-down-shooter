@@ -55,7 +55,7 @@ public class EnemyMelee: Enemy
     public float axtThrowCooldown;
     
     [Header("Attack Data")] 
-    public AttackDataEnemyMelee attackDataEnemyMelee;
+    public AttackDataEnemyMelee attackData;
     public List<AttackDataEnemyMelee> attackDatas;
     
     [SerializeField] private Transform hiddenWeapon;
@@ -110,7 +110,7 @@ public class EnemyMelee: Enemy
         base.OnDrawGizmos();
         
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, attackDataEnemyMelee.attackRange);
+        Gizmos.DrawWireSphere(transform.position, attackData.attackRange);
     }
     
     public override void AbilityTrigger()
@@ -212,7 +212,7 @@ public class EnemyMelee: Enemy
     }
 
 
-    public bool PlayerInAttackRange() => Vector3.Distance(transform.position, player.position) < attackDataEnemyMelee.attackRange;
+    public bool PlayerInAttackRange() => Vector3.Distance(transform.position, player.position) < attackData.attackRange;
 
     public void EnableWeaponModel(bool active)
     {
